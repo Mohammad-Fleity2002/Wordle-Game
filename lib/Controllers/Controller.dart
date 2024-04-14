@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_flutter_1_1/API_Connections/api_connection.dart';
 import 'package:test_flutter_1_1/utils/calculate_chart_stats.dart';
 import 'package:test_flutter_1_1/utils/calculate_stats.dart';
 
@@ -11,12 +12,24 @@ class Controller extends ChangeNotifier{
       backOrEnterTapped = false,
       gameWon = false,
       gameCompleted = false,
+      needHint=false,
       notEnoughLetters = false;
-  String correctWord = "";
+  String correctWord = "",description="";
   int currentTile = 0, currentRow = 0;
   List<TileModel> tilesEntered = [];
 
-  setCorrectWord({required String word}) => correctWord = word;
+  setCorrectWord({required String word}) {
+    description=chosenDesc;
+    return correctWord = word;
+  }
+  // setCorrectWord({required String word}) {
+  //   // description=desc;
+  //   return correctWord = word;
+  // }
+  // void setCorrectWord({required String word, required String desc}) {
+  //   correctWord = word;
+  //   description = desc;
+  // }
   setKeyTapped({
     required String value
   }){
@@ -24,6 +37,7 @@ class Controller extends ChangeNotifier{
       backOrEnterTapped = true;
       if (currentTile == 5 * (currentRow + 1)) {
         checkWord();
+        // needHint =false;
       } else {
         notEnoughLetters = true;
       }
@@ -69,6 +83,7 @@ class Controller extends ChangeNotifier{
         gameCompleted = true;
       }
     } else {
+      needHint=true;
       // print("wrong word");
       for (int i = 0; i < 5; i++) {
         if (guessedWord[i] == correctWord[i]) {
@@ -110,14 +125,16 @@ class Controller extends ChangeNotifier{
             // update the keyboard also
             keysMap.update(tilesEntered[i].letter, (value) => AnswerStage.incorrect);
             // print(keysMap[tilesEntered[i].letter]);
-
           }
+          // return false;
         }
       }
     }
     checkLine = true;
     currentRow++;
-
+    // if(needHint){
+    //   needHint=!needHint;
+    // }
     if (currentRow == 6) {
       gameCompleted = true;
     }
