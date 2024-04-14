@@ -30,11 +30,10 @@ class _TileState extends State<Tile> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _borderColor=Theme.of(context).primaryColorLight;
-    });
     _animationController = AnimationController(
-        duration: const Duration(milliseconds: 500), vsync: this);
+        duration: const Duration(milliseconds: 500),
+        vsync: this
+    );
     // duration of the animation
     super.initState();
   }

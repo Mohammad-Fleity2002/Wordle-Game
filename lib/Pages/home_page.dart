@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test_flutter_1_1/Components/stats_box.dart';
 import 'package:test_flutter_1_1/Pages/settings_page.dart';
 import 'package:test_flutter_1_1/Themes/theme_provider.dart';
 import 'package:test_flutter_1_1/data/keys_map.dart';
@@ -47,6 +48,12 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         elevation: 0,
         actions: [
+          IconButton(
+              onPressed: (){
+                showDialog(context: context, builder: (_)=>StatsBox());
+              },
+              icon: Icon(Icons.bar_chart_outlined),
+          ),
           IconButton(
               onPressed: () {
                 // Provider.of<ThemeProvider>(context,listen: false).setTheme();

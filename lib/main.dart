@@ -12,15 +12,16 @@ import 'package:test_flutter_1_1/Themes/themes.dart';
 import 'Pages/home_page.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_)=>Controller()),
-        ChangeNotifierProvider(create: (_)=>ThemeProvider()),
-      ],
-        child: const MyApp()
-    )
-  ));
+  // runApp(MaterialApp(
+  //   home: MultiProvider(
+  //     providers: [
+  //       ChangeNotifierProvider(create: (_)=>Controller()),
+  //       ChangeNotifierProvider(create: (_)=>ThemeProvider()),
+  //     ],
+  //       child: const MyApp()
+  //   )
+  // ));
+  runApp(const MyApp());
 }
 class MyApp extends StatelessWidget{
   const MyApp({Key? key}) : super(key: key);
@@ -28,25 +29,31 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return
-      FutureBuilder(
-        initialData: false,
-        future: ThemePreferences.getTheme(),
-        builder:(context,snapshot) {
-          if(snapshot.hasData){
-            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-              Provider.of<ThemeProvider>(context,listen:false).setTheme(turnOn: snapshot.data as bool);
-            });
-          }
-          return
-            Consumer<ThemeProvider>(
-          builder: (_,notifier,__)=>MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: "Wordle Clone",
-            theme: notifier.isDark?darkTheme:lightTheme,
-            home: const HomePage(),
-          ),
-        );
-        },
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => Controller()),
+          ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ],
+        child: FutureBuilder(
+          initialData: false,
+          future: ThemePreferences.getTheme(),
+          builder:(context,snapshot) {
+            if(snapshot.hasData){
+              WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+                Provider.of<ThemeProvider>(context,listen:false).setTheme(turnOn: snapshot.data as bool);
+              });
+            }
+            return
+              Consumer<ThemeProvider>(
+            builder: (_,notifier,__)=>MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: "Wordle Clone",
+              theme: notifier.isDark?darkTheme:lightTheme,
+              home: const HomePage(),
+            ),
+          );
+          },
+        ),
       );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_flutter_1_1/Themes/theme_provider.dart';
+import 'package:test_flutter_1_1/utils/quick_box.dart';
 
 import '../Themes/theme_preferences.dart';
 
@@ -48,6 +50,16 @@ class _SettingsState extends State<Settings> {
                     // print("_isSwitched: $_isSwitched");
                   },
               );
+            },
+          ),
+          ListTile(
+            title: const Text('Reset Statistics'),
+            onTap: () async {
+              final prefs = await SharedPreferences.getInstance();
+              prefs.remove('stats');
+              prefs.remove('chart');
+              prefs.remove('row');
+              runQuickBox(context: context, message: 'Statistics Reset');
             },
           )
         ],

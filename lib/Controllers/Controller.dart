@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_flutter_1_1/utils/calculate_chart_stats.dart';
+import 'package:test_flutter_1_1/utils/calculate_stats.dart';
 
 import '../Constants/anser_stages.dart';
 import '../Data/keys_map.dart';
@@ -62,9 +64,9 @@ class Controller extends ChangeNotifier{
       for (int i = currentRow * 5; i < (currentRow * 5) + 5; i++) {
         tilesEntered[i].answerStage = AnswerStage.correct;
         keysMap.update(tilesEntered[i].letter, (value) => AnswerStage.correct);
-        print(keysMap[tilesEntered[i].letter]);
-        // gameWon = true;
-        // gameCompleted = true;
+        // print(keysMap[tilesEntered[i].letter]);
+        gameWon = true;
+        gameCompleted = true;
       }
     } else {
       // print("wrong word");
@@ -73,7 +75,7 @@ class Controller extends ChangeNotifier{
           remainingCorrect.remove(guessedWord[i]);
           tilesEntered[i + (currentRow * 5)].answerStage = AnswerStage.correct;
           keysMap.update(guessedWord[i], (value) => AnswerStage.correct);
-          print(keysMap[guessedWord[i]]);
+          // print(keysMap[guessedWord[i]]);
         }
       }
       // what are the right letters guessed
@@ -92,7 +94,7 @@ class Controller extends ChangeNotifier{
 
             if (resultKey.single.value != AnswerStage.correct) {
               keysMap.update(resultKey.single.key, (value) => AnswerStage.contains);
-              print(keysMap[resultKey.single.key]);
+              // print(keysMap[resultKey.single.key]);
 
             }
           }
@@ -107,7 +109,7 @@ class Controller extends ChangeNotifier{
           if (results.single.value == AnswerStage.notAnswered) {
             // update the keyboard also
             keysMap.update(tilesEntered[i].letter, (value) => AnswerStage.incorrect);
-            print(keysMap[tilesEntered[i].letter]);
+            // print(keysMap[tilesEntered[i].letter]);
 
           }
         }
@@ -119,13 +121,27 @@ class Controller extends ChangeNotifier{
     if (currentRow == 6) {
       gameCompleted = true;
     }
+//     var statsList = await cs.getStats(); // Assuming cs.getStats() returns a Future<List>
+//
+// // Iterate over the list and print each element
+//     statsList?.forEach((element) {
+//       print(element);
+//     });
 
-    // if (gameCompleted) {
-    //   calculateStats(gameWon: gameWon);
-    //   if (gameWon) {
-    //     setChartStats(currentRow: currentRow);
-    //   }
-    // }
+    if (gameCompleted) {
+      calculateStats(gameWon: gameWon);
+      if (gameWon) {
+        print("game won controller line 134");
+        setChartStats(currentRow: currentRow);
+      }
+    }
+//      statsList = await cs.getStats(); // Assuming cs.getStats() returns a Future<List>
+//
+// // Iterate over the list and print each element
+//     statsList?.forEach((element) {
+//       print(element);
+//     });
+
 
     notifyListeners();
   }
