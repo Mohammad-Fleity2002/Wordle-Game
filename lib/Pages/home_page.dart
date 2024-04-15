@@ -1,6 +1,3 @@
-import 'dart:io';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_flutter_1_1/API_Connections/api_connection.dart';
@@ -10,7 +7,6 @@ import 'package:test_flutter_1_1/utils/quick_box.dart';
 
 import '../Components/grid.dart';
 import '../Components/keyboard_row.dart';
-import '../Constants/words.dart';
 import '../Controllers/Controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,9 +38,7 @@ class _HomePageState extends State<HomePage> {
     // to avoid an unwanted exception
     // the ? to tell the ide that this method
     // will only run ig the previous value is not null
-    // print_data();
     super.initState();
-    // fetchDataAndSetCorrectWord();
   }
 
   @override
@@ -60,15 +54,6 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Consumer<Controller>(
             builder: (_, notifier, __) {
-              // bool firstTime=true;
-              // Future.delayed(Duration(seconds: 4), () {
-              //   if (firstTime) {
-              //     runQuickBox(context: context,
-              //         message: notifier.description,
-              //         duration: 11);
-              //     firstTime = false;
-              //   }
-              // });
               if (notifier.notEnoughLetters) {
                 // runQuickBox(context: context, message: 'Not Enough Letters');
                 runQuickBox(context: context, message: notifier.description,duration: 3);

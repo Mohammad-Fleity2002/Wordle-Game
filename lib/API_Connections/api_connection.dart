@@ -56,17 +56,17 @@ void print_data() async {
     Map<String, String> wordDescriptions = await fetchWordDescriptions();
     final r = Random().nextInt(wordDescriptions.length);
     int i=0;
-    print("r: $r");
+    // print("r: $r");
     // Print the map containing word descriptions
     wordDescriptions.forEach((word, description) {
       if(i==r){
-        print(word);
-        print(wordDescriptions);
+        // print(word);
+        // print(wordDescriptions);
         chosenWord=word;
         chosenDesc=description;
       }
       i++;
-      print('$word: $description');
+      // print('$word: $description');
     });
   } catch (e) {
     print('Error: $e');

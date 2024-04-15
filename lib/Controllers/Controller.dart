@@ -22,14 +22,6 @@ class Controller extends ChangeNotifier{
     description=chosenDesc;
     return correctWord = word;
   }
-  // setCorrectWord({required String word}) {
-  //   // description=desc;
-  //   return correctWord = word;
-  // }
-  // void setCorrectWord({required String word, required String desc}) {
-  //   correctWord = word;
-  //   description = desc;
-  // }
   setKeyTapped({
     required String value
   }){
@@ -132,34 +124,17 @@ class Controller extends ChangeNotifier{
     }
     checkLine = true;
     currentRow++;
-    // if(needHint){
-    //   needHint=!needHint;
-    // }
     if (currentRow == 6) {
       gameCompleted = true;
     }
-//     var statsList = await cs.getStats(); // Assuming cs.getStats() returns a Future<List>
-//
-// // Iterate over the list and print each element
-//     statsList?.forEach((element) {
-//       print(element);
-//     });
 
     if (gameCompleted) {
       calculateStats(gameWon: gameWon);
       if (gameWon) {
-        print("game won controller line 134");
+        // print("game won controller line 134");
         setChartStats(currentRow: currentRow);
       }
     }
-//      statsList = await cs.getStats(); // Assuming cs.getStats() returns a Future<List>
-//
-// // Iterate over the list and print each element
-//     statsList?.forEach((element) {
-//       print(element);
-//     });
-
-
     notifyListeners();
   }
 }

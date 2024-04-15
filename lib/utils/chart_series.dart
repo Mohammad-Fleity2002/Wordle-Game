@@ -33,21 +33,21 @@ Future<List<charts.Series<ChartModel, String>>> getSeries() async {
           }
         },
         labelAccessorFn: (model, index) => model.score.toString()),
-    charts.Series<ChartModel, String>(
-        id: 'Stats',
-        data: data,
-        domainFn: (model, index) {
-          int i = index! + 1;
-          return i.toString();
-        },
-        measureFn: (model, index) => model.score,
-        colorFn: (model, index) {
-          if (model.currentGame) {
-            return charts.MaterialPalette.green.shadeDefault;
-          } else {
-            return charts.MaterialPalette.gray.shadeDefault;
-          }
-        },
-        labelAccessorFn: (model, index) => model.score.toString()),
+    // charts.Series<ChartModel, String>(
+    //     id: 'Stats',
+    //     data: data,
+    //     domainFn: (model, index) {
+    //       int i = index! + 1;
+    //       return i.toString();
+    //     },
+    //     measureFn: (model, index) => model.score,
+    //     colorFn: (model, index) {
+    //       if (model.currentGame) {
+    //         return charts.MaterialPalette.green.shadeDefault;
+    //       } else {
+    //         return charts.MaterialPalette.gray.shadeDefault;
+    //       }
+    //     },
+    //     labelAccessorFn: (model, index) => model.score.toString()),
   ];
 }
