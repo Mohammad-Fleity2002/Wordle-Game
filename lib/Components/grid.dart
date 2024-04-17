@@ -26,7 +26,7 @@ class _GridState extends State<Grid> {
         //limit the nb of squares to 30 5 per 6
         physics: const NeverScrollableScrollPhysics(),
         // prevent scrolling feature
-        padding: const EdgeInsets.fromLTRB(36, 20, 36, 20),
+        padding: const EdgeInsets.fromLTRB(36, 20, 36, 0),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing:4,
             crossAxisSpacing: 4,

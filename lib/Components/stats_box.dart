@@ -4,8 +4,8 @@ import 'package:test_flutter_1_1/Components/stats_tile.dart';
 import 'package:test_flutter_1_1/Constants/anser_stages.dart';
 import 'package:test_flutter_1_1/Data/keys_map.dart';
 import 'package:test_flutter_1_1/main.dart';
+import 'package:test_flutter_1_1/utils/calculate_stats.dart';
 
-import '../utils/calculate_chart_stats.dart';
 
 class StatsBox extends StatelessWidget {
   const StatsBox({Key? key}) : super(key: key);
@@ -35,12 +35,17 @@ class StatsBox extends StatelessWidget {
             child: FutureBuilder(
               future: getStats(),
               builder: (context, snapshot){
-                    List<int> results = [0, 0, 0, 0, 0]; // Default values as integers
+                List<String>? resultsString ;
+                List<int> results = [0, 0, 0, 0, 0]; // Default values as integers
                     if (snapshot.hasData) {
-                      results = snapshot.data as List<int>;
+                      results=snapshot.data as List<int>;
+                      // resultsString = snapshot.data?.toList();
+                      // for (var e in resultsString!) {
+                      //   results.add(int.parse(e));
+                      // }// data.add(ChartModel(score: int.parse(e), currentGame: false));
+
                     }
                     // Convert results to List<String> for display
-                    List<String> resultsString = results.map((e) => e.toString()).toList();
                     // print(results);
                     // print(resultsString);
                     return Row(

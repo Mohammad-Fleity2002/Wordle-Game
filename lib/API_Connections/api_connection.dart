@@ -2,13 +2,17 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:http/http.dart' as http;
+import 'package:test_flutter_1_1/utils/calculate_stats.dart';
 
 late String chosenWord;
 late String chosenDesc;
+String code = '661'; // Your code here
+
 
 Future<Map<String, String>> fetchWordDescriptions() async {
-  const String apiUrl = 'https://192.168.1.9/wordle/word_api.php';
-  const String code = '23452345'; // Your code here
+  // const String apiUrl = 'https://192.168.1.9/wordle/word_api.php';
+  const String apiUrl = 'https://192.168.8.181/wordle/word_api.php';
+  // const String code = '23452345'; // Your code here
 
   // Create an HttpClient instance
   HttpClient httpClient = HttpClient();
@@ -71,4 +75,15 @@ void print_data() async {
   } catch (e) {
     print('Error: $e');
   }
+}
+void setCode() async{
+  int  currentSteak = 0;
+  final stats = await  getStats();
+  if  (stats != null) {
+    currentSteak = (stats[3]);
+  }
+  if (currentSteak>5) {
+    code = "666";
+  }
+  print("code: $code");
 }

@@ -9,11 +9,11 @@ calculateStats({required bool gameWon}) async {
 
   final stats = await getStats();
   if (stats != null) {
-    gamesPlayed = int.parse(stats[0]);
-    gamesWon = int.parse(stats[1]);
-    winPercentage = int.parse(stats[2]);
-    currentSteak = int.parse(stats[3]);
-    maxStreak = int.parse(stats[4]);
+    gamesPlayed = (stats[0]);
+    gamesWon = (stats[1]);
+    winPercentage = (stats[2]);
+    currentSteak = (stats[3]);
+    maxStreak = (stats[4]);
   }
 
   gamesPlayed++;
@@ -45,12 +45,16 @@ calculateStats({required bool gameWon}) async {
   print("maxStreak${maxStreak.toString()}");
 }
 
-Future<List<String>?> getStats() async {
+Future<List<int>?> getStats() async {
   final prefs = await SharedPreferences.getInstance();
   final stats = prefs.getStringList('stats');
   print("stats line 50 calculate_stats $stats");
   if (stats != null) {
-    return stats;
+    List<int> result = [];
+    for (var e in stats) {
+      result.add(int.parse(e));
+    }
+    return result;
   } else {
     return null;
   }

@@ -95,7 +95,6 @@ class Controller extends ChangeNotifier{
               // don't turn green tiles (correct letter) to yellow (contains)
               tilesEntered[j + (currentRow * 5)].answerStage =
                   AnswerStage.contains;
-
             }
             final resultKey = keysMap.entries.where((element) => element.key == tilesEntered[j + (currentRow * 5)].letter);
 
@@ -122,15 +121,18 @@ class Controller extends ChangeNotifier{
         }
       }
     }
+    if (gameWon){
+      setCode();
+    }
     checkLine = true;
     currentRow++;
     if (currentRow == 6) {
       gameCompleted = true;
     }
-
     if (gameCompleted) {
       calculateStats(gameWon: gameWon);
       if (gameWon) {
+
         // print("game won controller line 134");
         setChartStats(currentRow: currentRow);
       }
