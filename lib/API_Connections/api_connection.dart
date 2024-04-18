@@ -10,8 +10,8 @@ String code = '661'; // Your code here
 
 
 Future<Map<String, String>> fetchWordDescriptions() async {
-  // const String apiUrl = 'https://192.168.1.9/wordle/word_api.php';
-  const String apiUrl = 'https://192.168.8.181/wordle/word_api.php';
+  // const String apiUrl = 'https://192.168.1.9/wordle/API.php';
+  const String apiUrl = 'https://192.168.8.181/wordle/API.php';
   // const String code = '23452345'; // Your code here
 
   // Create an HttpClient instance
@@ -43,7 +43,7 @@ Future<Map<String, String>> fetchWordDescriptions() async {
 
     // Extract words and their descriptions from JSON data and store in map
     for (int i = 0; i < jsonData['size']; i++) {
-      String word = jsonData['words']['name$i'];
+      String word = jsonData['words']['word$i'];
       String description = jsonData['word_desc']['desc$i'];
       wordDescriptions[word] = description;
     }
@@ -83,7 +83,8 @@ void setCode() async{
     currentSteak = (stats[3]);
   }
   if (currentSteak>5) {
-    code = "666";
+    code = "661";
+    // code = "666";
   }
   print("code: $code");
 }
