@@ -121,9 +121,9 @@ class Controller extends ChangeNotifier{
         }
       }
     }
-    if (gameWon){
-      setCode();
-    }
+    // if (gameWon){
+    //   setCode();
+    // }
     checkLine = true;
     currentRow++;
     if (currentRow == 6) {

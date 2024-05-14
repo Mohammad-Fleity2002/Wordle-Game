@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:math';
 import 'package:http/http.dart' as http;
@@ -6,12 +7,16 @@ import 'package:test_flutter_1_1/utils/calculate_stats.dart';
 
 late String chosenWord;
 late String chosenDesc;
-String code = '661'; // Your code here
+late Map<String, String> wordDescriptions;
+late bool first_Time=true;
+String code = '662';
 
 
 Future<Map<String, String>> fetchWordDescriptions() async {
-  // const String apiUrl = 'https://192.168.1.9/wordle/API.php';
-  const String apiUrl = 'https://192.168.8.181/wordle/API.php';
+  const String apiUrl = 'https://192.168.1.9/wordle/API.php';
+  // const String apiUrl = 'https://192.168.1.6/wordle/API.php';
+  // const String apiUrl = 'https://192.168.34.11/wordle/API.php';
+  // const String apiUrl = 'https://192.168.8.181/wordle/API.php';
   // const String code = '23452345'; // Your code here
 
   // Create an HttpClient instance
@@ -57,34 +62,42 @@ Future<Map<String, String>> fetchWordDescriptions() async {
 
 void print_data() async {
   try {
-    Map<String, String> wordDescriptions = await fetchWordDescriptions();
-    final r = Random().nextInt(wordDescriptions.length);
-    int i=0;
+    wordDescriptions = await fetchWordDescriptions();
+    first_Time=false;
+    choose_word();
+    print("---------------------------------------///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\------------------------------------");
+    // final r = Random().nextInt(wordDescriptions.length);
+    // int i=0;
     // print("r: $r");
-    // Print the map containing word descriptions
-    wordDescriptions.forEach((word, description) {
-      if(i==r){
-        // print(word);
-        // print(wordDescriptions);
-        chosenWord=word;
-        chosenDesc=description;
-      }
-      i++;
-      // print('$word: $description');
-    });
+    // // Print the map containing word descriptions
+    // wordDescriptions.forEach((word, description) {
+    //   if(i==r){
+    //     // print(word);
+    //     // print(wordDescriptions);
+    //     chosenWord=word;
+    //     chosenDesc=description;
+    //   }
+    //   i++;
+    //   print('$word: $description');
+    // });
   } catch (e) {
     print('Error: $e');
   }
 }
-void setCode() async{
-  int  currentSteak = 0;
-  final stats = await  getStats();
-  if  (stats != null) {
-    currentSteak = (stats[3]);
-  }
-  if (currentSteak>5) {
-    code = "661";
-    // code = "666";
-  }
-  print("code: $code");
+void choose_word(){
+  final r = Random().nextInt(wordDescriptions.length);
+  int i=0;
+  print("r: $r");
+  // Print the map containing word descriptions
+  wordDescriptions.forEach((word, description) {
+    if(i==r){
+      // print(word);
+      // print(wordDescriptions);
+      chosenWord=word;
+      chosenDesc=description;
+    }
+    i++;
+    print('$word: $description');
+  });
+
 }

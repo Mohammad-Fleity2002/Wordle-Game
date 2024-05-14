@@ -75,6 +75,29 @@ class StatsBox extends StatelessWidget {
             flex: 8,
             child: StatsChart(),
           ),
+           Expanded(
+            flex: 2,
+              child: FutureBuilder(
+                future: getStats(),
+                builder: (context, snapshot) {
+                  List<int> results = [0, 0, 0, 0, 0,0]; // Default values as integers
+                  if (snapshot.hasData) {
+                    results=snapshot.data as List<int>;
+
+                  }
+                  return Text(
+                    "level ${results[5].toInt()}",
+                    style: const TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+
+                    textAlign: TextAlign.center,
+                  );
+                }
+              )
+          ),
           Expanded(
               flex: 2,
               child: ElevatedButton(

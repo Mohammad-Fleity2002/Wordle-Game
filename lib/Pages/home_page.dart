@@ -28,7 +28,11 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     // final r = Random().nextInt(words.length);
     // _word = words[r];
-     print_data();
+    if(first_Time) {
+      print_data();
+    }else{
+      choose_word();
+    }
     _word=chosenWord;
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
