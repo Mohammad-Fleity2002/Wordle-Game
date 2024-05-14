@@ -1,0 +1,27 @@
+{
+    "description": "Animal with 5 letters",
+    "animals": [
+        "bison",
+        "camel",
+        "dingo",
+        "finch",
+        "horse",
+        "hyena",
+        "koala",
+        "lemur",
+        "llama",
+        "moose",
+        "mouse",
+        "otter",
+        "panda",
+        "sheep",
+        "shrew",
+        "skunk",
+        "sloth",
+        "snake",
+        "tapir",
+        "tiger",
+        "whale",
+        "zebra"
+    ]
+}

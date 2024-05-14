@@ -1,0 +1,12 @@
+{
+    "description": "A vegetables with 5 letters.",
+    "vegetables": [
+        "anise",
+        "basil",
+        "chard",
+        "leek ",
+        "mamey",
+        "onion",
+        "thyme"
+    ]
+}

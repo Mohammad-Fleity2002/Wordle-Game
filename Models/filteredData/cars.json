@@ -1,0 +1,27 @@
+{
+    "description": "Car with 5 letters",
+    "cars": [
+        "Acura",
+        "Aixam",
+        "Ariel",
+        "Buick",
+        "Dacia",
+        "Dodge",
+        "Elfin",
+        "Geely",
+        "Honda",
+        "Isuzu",
+        "Lexus",
+        "Lotus",
+        "Mazda",
+        "Noble",
+        "Panoz",
+        "Rimac",
+        "Scion",
+        "Skoda",
+        "Smart",
+        "Tatra",
+        "Tesla",
+        "Volvo"
+    ]
+}
