@@ -3,7 +3,8 @@ import json
 # Load the JSON data
 # with open(r'C:\xampp\htdocs\wordle\Models\filteredData\movies.json', 'r', encoding='utf-8') as f:
 # with open(r'C:\xampp\htdocs\wordle\Models\filteredData\vegetables.json', 'r', encoding='utf-8') as f:
-with open(r'C:\xampp\htdocs\wordle\Models\filteredData\words.json', 'r', encoding='utf-8') as f:
+# with open(r'C:\xampp\htdocs\wordle\Models\filteredData\words.json', 'r', encoding='utf-8') as f:
+with open(r'C:\xampp\htdocs\wordle\Models\filteredData\cities.json', 'r', encoding='utf-8') as f:
     # with open(r'C:\xampp\htdocs\wordle\Models\filteredData\fruits.json', 'r', encoding='utf-8') as f:
     # with open(r'C:\xampp\htdocs\wordle\Models\filteredData\countries.json', 'r', encoding='utf-8') as f:
     # with open(r'C:\xampp\htdocs\wordle\Models\filteredData\companies.json', 'r', encoding='utf-8') as f:
@@ -18,8 +19,10 @@ with open(r'C:\xampp\htdocs\wordle\Models\filteredData\words.json', 'r', encodin
 #     data['movies'][i] = data['movies'][i].upper()
 # for i in range(len(data['vegetables'])):
 #     data['vegetables'][i] = data['vegetables'][i].upper()
-for i in range(len(data['words'])):
-    data['words'][i] = data['words'][i].upper()
+# for i in range(len(data['words'])):
+#     data['words'][i] = data['words'][i].upper()
+for i in range(len(data['cities'])):
+    data['cities'][i] = data['cities'][i].upper()
 # for i in range(len(data['fruits'])):
 #     data['fruits'][i] = data['fruits'][i].upper()
 # for i in range(len(data['countries'])):
@@ -41,7 +44,8 @@ for i in range(len(data['words'])):
 # with open('COMPANIES.json', 'w', encoding='utf-8') as f:
 # with open('COUNTRIES.json', 'w', encoding='utf-8') as f:
 # with open('FRUITS.json', 'w', encoding='utf-8') as f:
-with open('WORDS.json', 'w', encoding='utf-8') as f:
+# with open('WORDS.json', 'w', encoding='utf-8') as f:
+with open('CITIES.json', 'w', encoding='utf-8') as f:
     # with open('VEGETABLES.json', 'w', encoding='utf-8') as f:
     # with open('MOVIES.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, indent=4, ensure_ascii=False)
