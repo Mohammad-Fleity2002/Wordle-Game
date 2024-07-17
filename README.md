@@ -1,8 +1,13 @@
-# test_flutter_1_1
+# wordle game
 
 A new Flutter project.
+using nlp in the backend to generate words.
 
-## Getting Started
+## branches 
+- [frontend-flutter: master branch](https://github.com/Mohammad-Fleity2002/Wordle-Game/tree/master)
+- [backend-python/php: main branch](https://github.com/Mohammad-Fleity2002/Wordle-Game/tree/main)
+
+### technical reference for android studio
 
 This project is a starting point for a Flutter application.
 
